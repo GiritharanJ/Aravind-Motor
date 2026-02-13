@@ -1,77 +1,36 @@
+
+<!-- index.html - Host on GitHub Pages -->
 <!DOCTYPE html>
 <html>
 <head>
-    <style>
-        /* Top Head */
-        .top-head {
-            background: #1a365d;
-            color: white;
-            text-align: center;
-            padding: 5px;
-            font-size: 14px;
-        }
-        
-        /* Header */
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 5%;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .nav a {
-            margin: 0 15px;
-            text-decoration: none;
-            color: #333;
-        }
-        
-        /* Hero */
-        .hero {
-            background: #f0f7ff;
-            padding: 60px 5%;
-            display: flex;
-            align-items: center;
-            min-height: 400px;
-        }
-        
-        .hero-content {
-            flex: 1;
-        }
-        
-        .hero-image {
-            flex: 1;
-            text-align: center;
-        }
-    </style>
+    <title>Aravind Motor Agency - Get Quote</title>
 </head>
 <body>
-    <!-- Top Head -->
-    <div class="top-head">
-        JANA Certified Insurance Agent | 10+ Years Experience
-    </div>
-    
-    <!-- Header -->
-    <header class="header">
-        <div class="logo">LOGO</div>
-        <nav class="nav">
-            <a href="#">Home</a>
-            <a href="#">About Me</a>
-            <a href="#">Services</a>
-            <a href="#">Contact</a>
-        </nav>
-    </header>
-    
-    <!-- Hero -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Your Trusted Insurance Advisor</h1>
-            <p>Professional guidance for all your insurance needs</p>
-            <button>Free Consultation</button>
-        </div>
-        <div class="hero-image">
-            <img src="agent-photo.jpg" alt="Professional Agent" width="300">
-        </div>
-    </section>
+    <h2>🚗 TATA & HYUNDAI - Best Deals in Village</h2>
+    <form id="leadForm">
+        <input type="text" name="name" placeholder="Full Name" required>
+        <input type="tel" name="phone" placeholder="Mobile Number" required>
+        <select name="vehicle">
+            <option>TATA Nexon</option>
+            <option>TATA Tiago</option>
+            <option>Hyundai i10</option>
+            <option>Hyundai i20</option>
+            <option>Spare Parts</option>
+        </select>
+        <textarea name="message" placeholder="Your Requirement"></textarea>
+        <button type="submit">Get Best Price</button>
+    </form>
+    <script>
+        // Send to n8n webhook
+        document.getElementById('leadForm').onsubmit = async function(e) {
+            e.preventDefault();
+            const data = new FormData(e.target);
+            await fetch('http://YOUR_LINUX_IP:5678/webhook/aravind-lead', {
+                method: 'POST',
+                body: JSON.stringify(Object.fromEntries(data))
+            });
+            alert('Thank you! We will contact you soon.');
+        };
+    </script>
 </body>
 </html>
