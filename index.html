@@ -532,7 +532,7 @@
         </div>
     </div>
 
- <script>
+    <script>
         // Vehicle option selection
         const vehicleOptions = document.querySelectorAll('.vehicle-option');
         const selectedVehicle = document.getElementById('selectedVehicle');
@@ -562,16 +562,15 @@
             data.timestamp = new Date().toISOString();
             data.source = 'Website Lead';
 
-         try {
+            try {
                 // Replace with your n8n webhook URL
-                const response = await fetch("https://unlogged-olinda-nonpsychological.ngrok-free.dev/webhook/aravind-lead", {
-                method: "POST",
+                const response = await fetch('http://YOUR_LINUX_IP:5678/webhook/aravind-lead', {
+                    method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify(data)
                 });
-
 
                 if (response.ok) {
                     // Show success message
@@ -611,6 +610,5 @@
 
         observer.observe(document.querySelector('.lead-card'));
     </script>
-
 </body>
 </html>
